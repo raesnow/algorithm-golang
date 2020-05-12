@@ -7,9 +7,9 @@ import (
 
 func Test_addTwoNumbers(t *testing.T) {
 	test1L1 := &ListNode{
-		Val:  2,
+		Val: 2,
 		Next: &ListNode{
-			Val:  4,
+			Val: 4,
 			Next: &ListNode{
 				Val:  3,
 				Next: nil,
@@ -17,9 +17,9 @@ func Test_addTwoNumbers(t *testing.T) {
 		},
 	}
 	test1L2 := &ListNode{
-		Val:  5,
+		Val: 5,
 		Next: &ListNode{
-			Val:  6,
+			Val: 6,
 			Next: &ListNode{
 				Val:  4,
 				Next: nil,
@@ -27,9 +27,9 @@ func Test_addTwoNumbers(t *testing.T) {
 		},
 	}
 	test1L3 := &ListNode{
-		Val:  7,
+		Val: 7,
 		Next: &ListNode{
-			Val:  0,
+			Val: 0,
 			Next: &ListNode{
 				Val:  8,
 				Next: nil,
@@ -46,7 +46,7 @@ func Test_addTwoNumbers(t *testing.T) {
 		Next: nil,
 	}
 	test2L3 := &ListNode{
-		Val:  0,
+		Val: 0,
 		Next: &ListNode{
 			Val:  1,
 			Next: nil,
@@ -90,9 +90,9 @@ func Test_addTwoNumbers(t *testing.T) {
 
 func Test_addTwoNumbersReverse(t *testing.T) {
 	test1L1 := &ListNode{
-		Val:  3,
+		Val: 3,
 		Next: &ListNode{
-			Val:  4,
+			Val: 4,
 			Next: &ListNode{
 				Val:  2,
 				Next: nil,
@@ -100,9 +100,9 @@ func Test_addTwoNumbersReverse(t *testing.T) {
 		},
 	}
 	test1L2 := &ListNode{
-		Val:  4,
+		Val: 4,
 		Next: &ListNode{
-			Val:  6,
+			Val: 6,
 			Next: &ListNode{
 				Val:  5,
 				Next: nil,
@@ -110,9 +110,9 @@ func Test_addTwoNumbersReverse(t *testing.T) {
 		},
 	}
 	test1L3 := &ListNode{
-		Val:  8,
+		Val: 8,
 		Next: &ListNode{
-			Val:  0,
+			Val: 0,
 			Next: &ListNode{
 				Val:  7,
 				Next: nil,
@@ -129,7 +129,7 @@ func Test_addTwoNumbersReverse(t *testing.T) {
 		Next: nil,
 	}
 	test2L3 := &ListNode{
-		Val:  1,
+		Val: 1,
 		Next: &ListNode{
 			Val:  0,
 			Next: nil,

@@ -10,10 +10,10 @@ Example:
 Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
 Output: 7 -> 0 -> 8
 Explanation: 342 + 465 = 807.
- */
+*/
 
 type ListNode struct {
-	Val int
+	Val  int
 	Next *ListNode
 }
 
@@ -34,7 +34,7 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	for ; l1 != nil && l2 != nil; l1, l2, l3 = l1.Next, l2.Next, l3.Next {
 		sum := l1.Val + l2.Val + carry
 		l3.Next = &ListNode{
-			Val:  sum % 10,
+			Val: sum % 10,
 		}
 		carry = sum / 10
 	}
@@ -46,14 +46,14 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	for ; l1 != nil; l1, l3 = l1.Next, l3.Next {
 		sum := l1.Val + carry
 		l3.Next = &ListNode{
-			Val:  sum % 10,
+			Val: sum % 10,
 		}
 		carry = sum / 10
 	}
 
 	if carry != 0 {
 		l3.Next = &ListNode{
-			Val:  carry,
+			Val: carry,
 		}
 	}
 
@@ -66,7 +66,7 @@ Example:
 Input: (3 -> 4 -> 2) + (4 -> 6 -> 5)
 Output: 8 -> 0 -> 7
 Explanation: 342 + 465 = 807.
- */
+*/
 
 func addTwoNumbersReverse(l1 *ListNode, l2 *ListNode) *ListNode {
 	if l1 == nil {

@@ -19,7 +19,7 @@ Input: "pwwkew"
 Output: 3
 Explanation: The answer is "wke", with the length of 3.
              Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
- */
+*/
 
 // lengthOfLongestSubstring
 // time: O(n)
@@ -38,7 +38,7 @@ func lengthOfLongestSubstring(s string) int {
 		i := iNew + 1
 		if loc, ok := charLocation[v]; ok {
 			if loc >= head {
-				head = loc+1
+				head = loc + 1
 				charLocation[v] = i
 				continue
 			}

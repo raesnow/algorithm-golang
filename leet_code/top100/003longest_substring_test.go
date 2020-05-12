@@ -13,32 +13,32 @@ func Test_lengthOfLongestSubstring(t *testing.T) {
 	}{
 		{
 			name: "test1",
-			args: args{s:"abcabcbb"},
+			args: args{s: "abcabcbb"},
 			want: 3,
 		},
 		{
 			name: "test2",
-			args: args{s:"bbbbb"},
+			args: args{s: "bbbbb"},
 			want: 1,
 		},
 		{
 			name: "test3",
-			args: args{s:"pwwkew"},
+			args: args{s: "pwwkew"},
 			want: 3,
 		},
 		{
 			name: "test4",
-			args: args{s:""},
+			args: args{s: ""},
 			want: 0,
 		},
 		{
 			name: "test5",
-			args: args{s:"a"},
+			args: args{s: "a"},
 			want: 1,
 		},
 		{
 			name: "test6",
-			args: args{s:"au"},
+			args: args{s: "au"},
 			want: 2,
 		},
 	}
