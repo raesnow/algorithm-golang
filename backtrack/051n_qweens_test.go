@@ -5,9 +5,9 @@ import (
 	"testing"
 )
 
-func Test_permutation(t *testing.T) {
+func Test_solveNQueens(t *testing.T) {
 	type args struct {
-		nums []int
+		n int
 	}
 	tests := []struct {
 		name string
@@ -15,15 +15,18 @@ func Test_permutation(t *testing.T) {
 	}{
 		{
 			name: "test1",
-			args: args{nums: []int{1, 2, 3}},
+			args: args{n: 8},
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := permutation(tt.args.nums)
-			println(tt.name)
+			got := solveNQueens(tt.args.n)
+			fmt.Println(tt.name)
 			for i, v := range got {
-				fmt.Printf("%d: %#v\n", i, v)
+				fmt.Printf("%d>: \n", i)
+				for _, v1 := range v {
+					fmt.Printf("%s\n", v1)
+				}
 			}
 		})
 	}

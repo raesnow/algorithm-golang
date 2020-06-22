@@ -1,12 +1,30 @@
 package main
 
+import "fmt"
+
 /*
- 穷举全排列,比方说给三个数 [1,2,3]
+Given a collection of distinct integers, return all possible permutations.
+
+Example:
+
+Input: [1,2,3]
+Output:
+[
+  [1,2,3],
+  [1,3,2],
+  [2,1,3],
+  [2,3,1],
+  [3,1,2],
+  [3,2,1]
+]
+
 */
 
-var result = make([][]int, 0)
+var result [][]int
 
-func permutation(nums []int) [][]int {
+func permute(nums []int) [][]int {
+	result = make([][]int, 0)
+
 	if len(nums) == 0 {
 		return result
 	}
@@ -17,7 +35,10 @@ func permutation(nums []int) [][]int {
 
 func backtrack(path, nums []int, endLength int) {
 	if len(path) == endLength {
-		result = append(result, path)
+		fmt.Printf("add path: %#v\n", path)
+		now := make([]int, len(path))
+		copy(now, path)
+		result = append(result, now)
 		return
 	}
 	for i, v := range nums {
@@ -29,6 +50,7 @@ func backtrack(path, nums []int, endLength int) {
 			choices = append(choices, nums[i+1:]...)
 		}
 		path = append(path, v)
+		fmt.Printf("path: %#v, choices: %#v\n", path, choices)
 		backtrack(path, choices, endLength)
 		path = path[:len(path)-1]
 	}
