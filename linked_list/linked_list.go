@@ -211,6 +211,71 @@ func findHalfPosNode(head *LinkNode) *LinkNode {
 	return slow
 }
 
+type KVLinkNode struct {
+	key   string
+	value string
+	next  *KVLinkNode
+	pre   *KVLinkNode
+}
+
+type LRUCache struct {
+	head     *KVLinkNode
+	tail     *KVLinkNode
+	length   int
+	capacity int
+	cache    map[string]*KVLinkNode
+}
+
+func makeLRUCache(capacity int) *LRUCache {
+	return &LRUCache{
+		capacity: capacity,
+		cache:    make(map[string]*KVLinkNode),
+	}
+}
+
+func (c *LRUCache) GetLength() int {
+	return c.length
+}
+
+func (c *LRUCache) GetCapacity() int {
+	return c.capacity
+}
+
+func (c *LRUCache) Add(key, value string) {
+	kvLinkNode := &KVLinkNode{
+		key:   key,
+		value: value,
+	}
+
+	if c.head == nil {
+		c.head = kvLinkNode
+		c.tail = kvLinkNode
+	} else {
+		kvLinkNode.next = c.head
+		c.head.pre = kvLinkNode
+		c.head = kvLinkNode
+	}
+	c.length++
+	c.cache[key] = kvLinkNode
+
+	if c.length > c.capacity {
+		delete(c.cache, c.tail.key)
+		c.tail = c.tail.pre
+		if c.tail != nil {
+			c.tail.next = nil
+		}
+		c.length--
+	}
+}
+
+func (c *LRUCache) Get(key string) string {
+	node, ok := c.cache[key]
+	if ok {
+		return node.value
+	}
+	return ""
+}
+
 func main() {
 	list := makeLinkedList(10)
 	printLinkedList(list)
@@ -248,4 +313,15 @@ func main() {
 	printLinkedList(list3)
 	node = findHalfPosNode(list3)
 	fmt.Printf("Find list1 half node: %d\n", node.value)
+
+	lru := makeLRUCache(3)
+	fmt.Printf("Create LRU Cache, length: %d, capacity: %d\n", lru.GetLength(), lru.GetCapacity())
+	lru.Add("1", "value1")
+	lru.Add("2", "value2")
+	lru.Add("3", "value3")
+	fmt.Printf("1: %s, 2: %s, 3: %s\n", lru.Get("1"), lru.Get("2"), lru.Get("3"))
+	lru.Add("4", "value4")
+	fmt.Printf("LRU Cache, length: %d, capacity: %d\n", lru.GetLength(), lru.GetCapacity())
+	fmt.Printf("1: %s, 2: %s, 3: %s, 4: %s\n",
+		lru.Get("1"), lru.Get("2"), lru.Get("3"), lru.Get("4"))
 }
