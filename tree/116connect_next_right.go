@@ -1,7 +1,7 @@
 package main
 
 /*
-You are given a perfect binary tree where all leaves are on the same level, and every parent has two children. The binary tree has the following definition:
+You are given a perfect binary tree where all leaves are on the same level, and every parent has two children. The binary tree has the following definition:
 
 struct Node {
   int val;
@@ -55,41 +55,4 @@ func connectTwoNode(node1, node2 *Node) {
 	connectTwoNode(node1.Left, node1.Right)
 	connectTwoNode(node2.Left, node2.Right)
 	connectTwoNode(node1.Right, node2.Left)
-}
-
-func connect(root *Node) *Node {
-	if root == nil {
-		return nil
-	}
-	queue := []*Node{root}
-	for len(queue) != 0 {
-		newQueue := make([]*Node, 0)
-
-		preIndex := -1
-		for i, v := range queue {
-			if v != nil {
-				preIndex = i
-				break
-			}
-		}
-		if preIndex == -1 {
-			break
-		}
-
-		pre := queue[preIndex]
-		newQueue = append(newQueue, pre.Left)
-		newQueue = append(newQueue, pre.Right)
-
-		for _, v := range queue[preIndex+1:] {
-			if v == nil {
-				continue
-			}
-			pre.Next = v
-			pre = v
-			newQueue = append(newQueue, pre.Left)
-			newQueue = append(newQueue, pre.Right)
-		}
-		queue = newQueue
-	}
-	return root
 }
