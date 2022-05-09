@@ -28,5 +28,10 @@ func Test_lengthOfLIS(t *testing.T) {
 				t.Errorf("lengthOfLIS1() = %v, want %v", got, tt.want)
 			}
 		})
+		t.Run(tt.name, func(t *testing.T) {
+			if got := lengthOfLIS2(tt.args.nums); got != tt.want {
+				t.Errorf("lengthOfLIS1() = %v, want %v", got, tt.want)
+			}
+		})
 	}
 }
